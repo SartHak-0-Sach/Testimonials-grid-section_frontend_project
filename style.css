@@ -1,5 +1,189 @@
-*{
+:root {
+    --bg-color: #ECF2F8;
+    --white-color: #fff;
+    --primary-color: #733FC8;
+    --primary-accent-color: #A775F1;
+    --secondary-color: #48556A;
+    --tertiary-color: #19202D;
+    --lightest-gray-color: #CFCFCF;
+}
+
+body {
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--white-color);
+    background-color: var(--bg-color);
+    margin: 4em auto;
+}
+
+h2,
+p {
     margin: 0;
     padding: 0;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+/* individual card styling */
+.card {
+    grid-area: card;
     box-sizing: border-box;
+    background: #733FC8;
+    border-radius: 10px;
+    padding: 2em 1.75em;
+    margin: 1em;
+    display: grid;
+    grid-template-columns: 45px auto;
+    grid-template-rows: 16px 16px auto minmax(auto, 1fr);
+    grid-template-areas:
+        "img name"
+        "img title"
+        "main-quote main-quote"
+        "testimonial testimonial";
+}
+
+.card__name {
+    grid-area: name;
+    font-size: .8125rem;
+    font-weight: 500;
+}
+
+.card__title {
+    grid-area: title;
+    font-size: .6875rem;
+    opacity: 50%;
+    margin-top: 2px;
+}
+
+.card__main-quote {
+    grid-area: main-quote;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 1em 0;
+}
+
+.card__testimonial {
+    font-size: .8125rem;
+    grid-area: testimonial;
+    color: var(--testimonial-color);
+    opacity: 70%;
+    line-height: 1.6;
+}
+
+.card__img {
+    grid-area: img;
+    height: 28px;
+    width: auto;
+    border-radius: 100%;
+    margin-top: 2px;
+}
+
+.accent-border {
+    border: 2px solid var(--primary-accent-color);
+}
+
+/* card variations stying */
+.card1 {
+    grid-area: card1;
+    background: var(--primary-color);
+    color: var(--white-color);
+    background-image: url(../images/bg-pattern-quotation.svg);
+    background-repeat: no-repeat;
+    background-position: 85% 0%;
+}
+
+.card2 {
+    grid-area: card2;
+    background: var(--secondary-color);
+    color: var(--white-color);
+}
+
+.card3 {
+    grid-area: card3;
+}
+
+.card4 {
+    grid-area: card4;
+    background: var(--tertiary-color);
+    color: var(--white-color);
+}
+
+.card5 {
+    grid-area: card5;
+}
+
+.card3,
+.card5 {
+    background: var(--white-color);
+    color: var(--secondary-color);
+}
+
+/*  tablet sized media query */
+@media (min-width: 600px) {
+
+    /* multiple cards layout */
+    .container {
+        display: grid;
+        grid-template-columns: minmax(250px, auto) minmax(250px, auto);
+        grid-template-areas:
+            "card1 card4"
+            "card2 card3"
+            "card5 card5";
+        gap: 2em;
+        padding: 2em;
+        align-items: unset;
+    }
+
+    .card {
+        margin: 0;
+    }
+}
+
+/* desktop sized media query */
+@media (min-width: 1100px) {
+
+    /* multiple cards layout */
+    .container {
+        grid-template-columns: repeat(4, minmax(200px, auto));
+        grid-template-areas:
+            "card1 card1 card2 card5"
+            "card3 card4 card4 card5";
+    }
+
+    .card {
+        margin: 0;
+        padding: 2em;
+    }
+
+    .card1 {
+        background-position: 80% 0%;
+    }
+}
+
+.attribution {
+    font-size: 11px;
+    text-align: center;
+    color: var(--tertiary-color);
+    width: 400px;
+    margin: 2em auto;
+}
+
+.attribution a {
+    color: var(--primary-accent-color);
+    text-decoration: none;
+}
+
+.attribution a:hover,
+.attribution a:focus {
+    background: var(--primary-accent-color);
+    color: var(--white-color);
+    padding: 1px 3px;
 }
